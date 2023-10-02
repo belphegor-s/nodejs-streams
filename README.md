@@ -10,7 +10,7 @@ Streams divide the data into small chunks (by creating a readable stream), and l
 
 ### Downloading big files →
 
-**************************Wrong way →**************************
+**Wrong way →**
 
 ```tsx
 if(req.url === '/') {
@@ -28,7 +28,7 @@ if(req.url === '/') {
 
 `res` → response (Writable Stream)
 
-**********************************Piping →********************************** `readbableStream` → `writableStream`
+**Piping →** `readbableStream` → `writableStream`
 
 ```tsx
 // Copy Big Files ->
@@ -43,7 +43,7 @@ readStream.on('data', (chunk) => {
 
 ### Custom Streams →
 
-************************Readable →************************
+**Readable →**
 
 ```tsx
 import { Readable } from "stream";
@@ -65,7 +65,7 @@ console.log(readableStream.push('a'))
 // if the input string is less than 2 bytes will return --> true
 ```
 
-************************Writable →************************
+**Writable →**
 
 ```tsx
 import { Writable } from "stream";
@@ -99,7 +99,7 @@ sampleFileStream.on('data', (chunk) => {
 })
 ```
 
-****************************************Transform Stream →****************************************
+**Transform Stream →**
 
 ```tsx
 import { Transform } from "stream";
@@ -116,7 +116,7 @@ const transformStream = new Transform({
 sampleFileStream.pipe(transformStream).pipe(outputWritableStream)
 ```
 
-******************************************Error Handling via `pipeline` →**
+**Error Handling via `pipeline` →**
 
 ```tsx
 import { pipeline } from "stream";
@@ -128,7 +128,7 @@ pipeline(sampleFileStream, transformStream, outputWritableStream, (err) => {
 })
 ```
 
-********************************************Object Mode in Streams →********************************************
+**Object Mode in Streams →**
 
 ```tsx
 const readableStream = new Readable({
